@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portafolio Angel Marin</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Concepto: ficha técnica de ingeniería. Una columna, proyectos como láminas numeradas por orden de importancia, con espacio reservado para capturas. */
+:root{
+  --bg:#F2F5F8; --surface:#FFFFFF; --ink:#13253D; --muted:#55657A; --line:#D5DCE5;
+  --accent:#0B7A86; --accent-ink:#FFFFFF; --soft:#E3EEF1;
+  --f-display:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;
+  --f-body:'IBM Plex Sans','Segoe UI',system-ui,sans-serif;
+  --f-mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E1620; --surface:#16212E; --ink:#E8EEF5; --muted:#9DB0C4; --line:#27384A;
+  --accent:#4DC3CF; --accent-ink:#0E1620; --soft:#193240; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E1620; --surface:#16212E; --ink:#E8EEF5; --muted:#9DB0C4; --line:#27384A;
+  --accent:#4DC3CF; --accent-ink:#0E1620; --soft:#193240; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;
+  padding-block:0;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:60rem;margin:0 auto;padding-block:3rem 4rem}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+h1,h2,h3{font-family:var(--f-display);line-height:1.1;text-wrap:balance;margin:0}
+.eyebrow{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* Encabezado */
+header{display:grid;gap:1.5rem;padding-bottom:2.5rem;border-bottom:2px solid var(--ink)}
+h1{font-size:clamp(2.4rem,7vw,4rem);font-weight:700;letter-spacing:-.02em}
+.role{font-size:1.2rem;max-width:40rem;margin:0;color:var(--ink)}
+.role span{color:var(--accent);font-weight:600}
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.75rem 2rem;margin:0;padding:0;list-style:none}
+.contact li{min-width:0}
+.contact .k{display:block;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.contact .v{overflow-wrap:anywhere}
+.copy{font:inherit;font-family:var(--f-mono);font-size:.7rem;margin-left:.5rem;padding:.1rem .45rem;border:1px solid var(--line);
+  background:var(--surface);color:var(--ink);border-radius:3px;cursor:pointer}
+
+section{padding-top:3rem}
+section>.head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem;
+  border-bottom:1px solid var(--line);padding-bottom:.6rem}
+h2{font-size:1.6rem;font-weight:600}
+.lead{max-width:44rem;margin:0}
+.plus{margin:2rem 0 1rem;color:var(--accent)}
+
+/* Proyectos */
+.project{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:1.5rem;margin-bottom:1.5rem;
+  display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:1.75rem}
+.project h3{font-size:1.4rem;font-weight:600;margin:.25rem 0 .6rem}
+.project p{margin:.4rem 0}
+.project ul{margin:.6rem 0 0;padding-left:1.1rem}
+.project li{margin:.25rem 0}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem;padding:0;list-style:none}
+.tags li{font-family:var(--f-mono);font-size:.72rem;padding:.15rem .55rem;background:var(--soft);color:var(--ink);border-radius:3px;margin:0}
+.status{display:inline-block;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;
+  padding:.1rem .5rem;border:1px solid var(--accent);color:var(--accent);border-radius:3px;margin-left:.5rem}
+.shots{display:grid;gap:.75rem;align-content:start;min-width:0}
+.shot{aspect-ratio:16/10;max-width:100%;border:1.5px dashed var(--line);border-radius:4px;background:var(--bg);
+  display:grid;place-items:center;text-align:center;padding:.75rem;color:var(--muted);font-family:var(--f-mono);font-size:.75rem}
+.shot img{width:100%;height:100%;object-fit:cover;border-radius:3px}
+.shots.pair{grid-template-columns:1fr 1fr}
+.shots.pair .shot{aspect-ratio:4/3}
+
+/* Experiencia / formación */
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:2rem}
+.cols>div{min-width:0}
+.entry{padding:1rem 0;border-top:1px solid var(--line)}
+.entry:first-of-type{border-top:0;padding-top:0}
+.entry h3{font-size:1.1rem;font-weight:600;font-family:var(--f-body)}
+.entry .meta{font-family:var(--f-mono);font-size:.75rem;color:var(--muted)}
+.entry p{margin:.35rem 0 0}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1.25rem 2rem}
+.skills h3{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:.4rem}
+.skills p{margin:0}
+footer{margin-top:3.5rem;padding-top:1.25rem;border-top:2px solid var(--ink);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;color:var(--muted);font-size:.9rem}
+
+@media (max-width:720px){
+  .wrap{padding-block:2rem 3rem}
+  .project{grid-template-columns:1fr;padding:1.1rem}
+  .shots.pair{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:no-preference){a,.copy{transition:color .15s,background .15s}}
+
+/* Pieza destacada */
+.feature{margin-top:2.5rem;border:1px solid var(--line);border-top:4px solid var(--accent);background:var(--surface);border-radius:6px;padding:1.75rem}
+.feature h2{font-size:clamp(1.6rem,4vw,2.2rem);margin:.4rem 0 .75rem}
+.feature .lead{margin-bottom:1.25rem}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:.6rem 1.5rem;margin:0 0 1.5rem;padding:0;list-style:none}
+.kpis li{border-left:2px solid var(--accent);padding-left:.75rem;min-width:0}
+.kpis b{display:block;font-family:var(--f-display);font-size:1rem}
+.kpis span{font-size:.9rem;color:var(--muted)}
+.feature .shots{grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.feature .shot{aspect-ratio:auto;min-height:10rem;border-radius:4px}
+.feature .shot img{height:auto;object-fit:contain;border:1px solid var(--line)}
+@media (max-width:720px){.feature{padding:1.1rem}.feature .shots{grid-template-columns:1fr}}
+
+/* Corrección: imágenes dentro de su columna */
+.shots{grid-template-columns:minmax(0,1fr)}
+.shot{min-width:0;overflow:hidden}
+.shot.has-img{aspect-ratio:auto;padding:0;border:0;background:none;display:block;overflow:visible}
+.shot.has-img img{display:block;width:100%;max-width:100%;height:auto;object-fit:contain;border:1px solid var(--line);border-radius:4px}
+.shots.pair{grid-template-columns:repeat(2,minmax(0,1fr))}
+.feature .shots{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:720px){.shots.pair,.feature .shots{grid-template-columns:minmax(0,1fr)}}
+.project.solo{grid-template-columns:minmax(0,1fr)}
+
+/* Las capturas sin imagen no se muestran; la tarjeta ocupa todo el ancho */
+.shot[data-img]:not(.has-img){display:none}
+.shots:not(:has(.has-img)){display:none}
+.project:not(:has(.has-img)){grid-template-columns:minmax(0,1fr)}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Portafolio · Cartagena, Colombia</div>
+    <h1>Angel Danilo Marin Giraldo</h1>
+    <p class="role">Ingeniero de Sistemas. Desarrollo <span>sistemas web y automatizaciones</span> que reemplazan procesos manuales, brindo <span>soporte técnico</span> a usuarios y administro bases de datos. Además me formo en ciberseguridad.</p>
+    <ul class="contact">
+      <li><span class="k">Correo</span><span class="v" id="mail">adanilomarin14@gmail.com</span><button class="copy" type="button" data-copy="adanilomarin14@gmail.com">copiar</button></li>
+      <li><span class="k">Teléfono</span><span class="v">+57 301 531 5106</span></li>
+      <li><span class="k">GitHub</span><span class="v"><a href="https://github.com/marin2029" target="_blank" rel="noopener">github.com/marin2029</a></span></li>
+      <li><span class="k">LinkedIn</span><span class="v"><a href="https://linkedin.com/in/angel-marin-giraldo" target="_blank" rel="noopener">linkedin.com/in/angel-marin-giraldo</a></span></li>
+    </ul>
+  </header>
+
+  <section class="feature">
+    <div class="eyebrow">Pieza destacada · EMARINT S.A.S.</div>
+    <h2>Dashboard ejecutivo de obra</h2>
+    <p class="lead">Un tablero por proyecto que le muestra a la gerencia, en una sola pantalla, cómo va la obra y qué requiere atención. Lo construí sobre Google Apps Script y Google Sheets, y se alimenta del reporte de campo del equipo.</p>
+    <ul class="kpis">
+      <li><b>Indicadores clave</b><span>Actividades, avance de obra, terminadas, pendientes y alertas.</span></li>
+      <li><b>Estado de actividades</b><span>Terminadas, pendientes, en ejecución y suspendidas.</span></li>
+      <li><b>Avance por capítulos</b><span>Barra de progreso de cada capítulo de obra.</span></li>
+      <li><b>Alertas inteligentes</b><span>Urgentes, de atención y de control, con las actividades vencidas.</span></li>
+      <li><b>Ritmo del proyecto</b><span>Días, frentes activos, variación semanal y actividades restantes.</span></li>
+      <li><b>Salud del proyecto</b><span>Un puntaje y un semáforo para ver el estado general.</span></li>
+    </ul>
+    <div class="shots">
+      <div class="shot" data-img="img/dashboard-ejecutivo-1.png">Captura: dashboard ejecutivo, obra A</div>
+      <div class="shot" data-img="img/dashboard-ejecutivo-2.png">Captura: dashboard ejecutivo, obra B</div>
+    </div>
+  </section>
+
+
+  <section>
+    <div class="head"><h2>Proyectos destacados</h2><span class="eyebrow">Ordenados por relevancia</span></div>
+
+    <!-- Para cada proyecto: sustituye el recuadro .shot por <img src="..." alt="..."> cuando tengas las capturas. Si tienes cifras (usuarios, horas ahorradas, registros), agrégalas como un <li> en "Resultado". -->
+
+    <article class="project">
+      <div>
+        <div class="eyebrow">EMARINT S.A.S. · Construcción y arquitectura</div>
+        <h3>Sistema de gestión de obra</h3>
+        <p>Plataforma digital que centraliza la operación de las obras de la empresa, con roles de usuario y reportes desde campo. El equipo la revisa a diario.</p>
+        <ul>
+          <li>Panel de obras con el estado de cada proyecto por etapas: inicio, desarrollo, fase final y entrega.</li>
+          <li>Formulario de seguimiento de actividades con código, capítulo, estado, prioridad, fechas y presupuesto.</li>
+          <li>Módulos de inventario, órdenes de compra con firma y planilla de asistencia, además de PQRS y bolsa de empleo.</li>
+          <li>Backend modular en Apps Script: KPIs, listas de verificación QA/QC y notificaciones.</li>
+          <li>Libro de registro asistido por IA (API de OpenAI).</li>
+        </ul>
+        <ul class="tags"><li>Google Apps Script</li><li>Google Sheets</li><li>Softr</li><li>HTML/CSS</li><li>OpenAI API</li></ul>
+      </div>
+      <div class="shots">
+        <div class="shot" data-img="img/dashboard-en-vivo.png">Captura: dashboard en vivo</div>
+        <div class="shot" data-img="img/formulario-de-seguimiento.png">Captura: formulario de seguimiento</div>
+      </div>
+    </article>
+
+    <article class="project">
+      <div>
+        <div class="eyebrow">EMARINT S.A.S.</div>
+        <h3>Sitio web corporativo y dominio</h3>
+        <p>Diseño y mantenimiento del sitio de la empresa, con administración del dominio institucional y su configuración DNS.</p>
+        <ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>PHP</li><li>DNS</li></ul>
+      </div>
+      <div class="shots">
+        <div class="shot" data-img="img/pagina-principal.png">Captura: página principal</div>
+      </div>
+    </article>
+
+    <div class="eyebrow plus">Plus: ciberseguridad</div>
+
+    <article class="project">
+      <div>
+        <div class="eyebrow">Maestría en Ciberseguridad · UTB</div>
+        <h3>Auditoría de seguridad de tramitia-app <span class="status">Proyecto en equipo</span></h3>
+        <p>Evaluación de seguridad de una aplicación web, presentada y sustentada oralmente en la maestría.</p>
+        <ul>
+          <li>Informe de hallazgos de seguridad.</li>
+          <li>Protocolo de investigación estructurado en tres pilares.</li>
+          <li>Scripts automáticos de recolección de evidencia.</li>
+          <li>Modelado de amenazas con OWASP Threat Dragon.</li>
+        </ul>
+        <ul class="tags"><li>OWASP</li><li>Threat modeling</li><li>Scripting</li><li>Informe técnico</li></ul>
+      </div>
+      <div class="shots">
+        <div class="shot" data-img="img/diagrama-de-amenazas.png">Captura: diagrama de amenazas</div>
+        <div class="shot" data-img="img/extracto-del-informe-de-hallazgos.png">Captura: extracto del informe de hallazgos</div>
+      </div>
+    </article>
+
+    <article class="project">
+      <div>
+        <div class="eyebrow">Proyecto en equipo · Ciberseguridad</div>
+        <h3>Auditor correctivo de seguridad (AUDITOR-BOLA) <span class="status">En desarrollo</span></h3>
+        <p>Motor determinista que diagnostica, corrige, verifica, revierte y conserva evidencia de seguridad en aplicaciones y repositorios autorizados. Para auditar otra aplicación no se cambia el motor: se crea un perfil JSON.</p>
+        <ul>
+          <li>Pruebas de BOLA, RBAC/ABAC, CORS, políticas de códigos HTTP y contenedores con usuario no root.</li>
+          <li>Ciclo correctivo: diagnóstico, respaldo, corrección, verificación y rollback, con hash SHA-256 y diff de cada cambio.</li>
+          <li>Interfaz gráfica y línea de comandos. Un asistente de IA propone las correcciones, la persona decide y el auditor verifica.</li>
+          <li>Pruebas automáticas y CI en GitHub Actions.</li>
+        </ul>
+        <ul class="tags"><li>Python</li><li>BOLA</li><li>RBAC/ABAC</li><li>CORS</li><li>GitHub Actions</li><li>Evidencia y rollback</li></ul>
+        <p><a href="https://github.com/BrayanAlexanderSalazarReyes12/AUDITOR-BOLA" target="_blank" rel="noopener">Ver repositorio en GitHub</a></p>
+      </div>
+      <div class="shots">
+        <div class="shot" data-img="img/ejecucion-de-la-herramienta.png">Captura: ejecución de la herramienta</div>
+      </div>
+    </article>
+
+    <article class="project">
+      <div>
+        <div class="eyebrow">Proyecto personal</div>
+        <h3>Mini yo, agente de monitoreo</h3>
+        <p>Agente local para Windows que vigila el rendimiento del PC y lo muestra a través de un avatar animado.</p>
+        <ul class="tags"><li>Windows</li><li>Monitoreo</li><li>Interfaz animada</li></ul>
+      </div>
+      <div class="shots">
+        <div class="shot" data-img="img/avatar-y-metricas.png">Captura: avatar y métricas</div>
+      </div>
+    </article>
+  </section>
+
+  <section>
+    <div class="head"><h2>Publicaciones y ponencias</h2><span class="eyebrow">Maestría en Ciberseguridad · UTB</span></div>
+    <article class="project">
+      <div>
+        <div class="eyebrow">Paper aceptado · IEEE IHTC 2026 <span class="status">19 oct 2026 · Guayaquil</span></div>
+        <h3>ISP Guardian: arquitectura de ciberdefensa automatizada para ISP pequeños y medianos basada en MikroTik RouterOS</h3>
+        <p>Aceptado en la IEEE International Humanitarian Technology Conference 2026 (Guayaquil, Ecuador), sesión de inclusión digital, conectividad y sociedades inteligentes. Propone una plataforma modular, desplegable con herramientas de código abierto y hardware común, para que los proveedores de internet pequeños detecten y contengan amenazas sin inspección profunda de paquetes ni agentes en los equipos de los clientes.</p>
+        <ul>
+          <li>Monitoreo de flujos (NetFlow/IPFIX) y telemetría DNS, correlacionados por suscriptor mediante PPPoE y RADIUS.</li>
+          <li>Inteligencia de amenazas (CTI) y puntaje de riesgo por cliente.</li>
+          <li>Respuesta automática: sinkhole DNS, limitación de ancho de banda, cuarentena, RADIUS CoA y walled garden.</li>
+          <li>Servicios de seguridad para el suscriptor: filtrado DNS, inventario de dispositivos y alertas.</li>
+        </ul>
+        <ul class="tags"><li>MikroTik RouterOS</li><li>NetFlow/IPFIX</li><li>DNS</li><li>CTI</li><li>SOAR</li><li>FreeRADIUS</li><li>Docker</li><li>FastAPI</li><li>Redis</li><li>ClickHouse</li></ul>
+      </div>
+      <div class="shots">
+        <div class="shot" data-img="img/arquitectura-de-isp-guardian.png">Figura: arquitectura de ISP Guardian</div>
+        <div class="shot" data-img="img/modelo-operativo-de-seguridad.png">Figura: modelo operativo de seguridad</div>
+      </div>
+    </article>
+  </section>
+
+  <section>
+    <div class="head"><h2>Experiencia y formación</h2></div>
+    <div class="cols">
+      <div>
+        <div class="eyebrow" style="margin-bottom:.75rem">Experiencia</div>
+        <div class="entry">
+          <h3>Ingeniero de Sistemas · EMARINT S.A.S.</h3>
+          <p>Desarrollo web, administración de bases de datos MySQL y PostgreSQL, gestión de dominio y DNS, automatización de procesos y soporte técnico por sistema de tickets.</p>
+        </div>
+        <div class="entry">
+          <h3>DADIS</h3>
+          <p>Gestión y actualización de la base de datos institucional del programa de vacunación. Soporte técnico a usuarios y áreas administrativas.</p>
+        </div>
+        <div class="entry">
+          <h3>Fundación Arte y Cultura</h3>
+          <p>Apoyo en sistemas y gestión de información.</p>
+        </div>
+      </div>
+      <div>
+        <div class="eyebrow" style="margin-bottom:.75rem">Formación</div>
+        <div class="entry">
+          <h3>Maestría en Ciberseguridad</h3>
+          <div class="meta">Universidad Tecnológica de Bolívar · en curso</div>
+        </div>
+        <div class="entry">
+          <h3>Ingeniería de Sistemas</h3>
+          <div class="meta">Unicolombo · 2025</div>
+        </div>
+        <div class="entry">
+          <h3>Tecnólogo</h3>
+          <div class="meta">2023</div>
+        </div>
+        <div class="entry">
+          <h3>Cisco Network Security</h3>
+          <div class="meta">Certificación</div>
+        </div>
+        <div class="entry">
+          <h3>Inglés</h3>
+          <div class="meta">Intermedio (B1)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="head"><h2>Habilidades</h2></div>
+    <div class="skills">
+      <div><h3>Desarrollo web</h3><p>HTML5, CSS3, JavaScript, PHP</p></div>
+      <div><h3>Soporte técnico</h3><p>Atención a usuarios, sistemas de tickets, diagnóstico y resolución de incidencias</p></div>
+      <div><h3>Bases de datos</h3><p>MySQL, PostgreSQL, SQL</p></div>
+      <div><h3>Automatización</h3><p>Google Apps Script, Google Sheets, Softr, integración con APIs</p></div>
+      <div><h3>Dominios y redes</h3><p>Administración de dominio y DNS, fundamentos de redes</p></div>
+      <div><h3>Plus: ciberseguridad</h3><p>Maestría en curso, OWASP, modelado de amenazas, certificación Cisco Network Security</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Angel Danilo Marin Giraldo · Cartagena, Colombia</span>
+    <span><a href="https://github.com/marin2029" target="_blank" rel="noopener">GitHub</a> · <a href="https://linkedin.com/in/angel-marin-giraldo" target="_blank" rel="noopener">LinkedIn</a></span>
+  </footer>
+</div>
+
+<script>
+document.querySelectorAll('.copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.getAttribute('data-copy');
+    var done=function(){var o=b.textContent;b.textContent='copiado';setTimeout(function(){b.textContent=o},1500)};
+    var fallback=function(){var r=document.createRange();r.selectNodeContents(document.getElementById('mail'));var s=getSelection();s.removeAllRanges();s.addRange(r)};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,fallback)}else{fallback()}
+  });
+});
+
+document.querySelectorAll('.shot[data-img]').forEach(function(el){
+  var im=new Image();
+  im.onload=function(){el.textContent='';el.classList.add('has-img');el.appendChild(im)};
+  im.alt=el.textContent;
+  im.src=el.getAttribute('data-img');
+});
+</script>
+
+</body>
+</html>
